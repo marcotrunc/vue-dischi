@@ -4,7 +4,7 @@
       <div class="row gy-5 gx-md-5">
         <div
           id="col"
-          v-for="(disc, index) in discs"
+          v-for="(disc, index) in filterdiscs"
           :key="index"
           class="col-6 col-md-3 col-lg-3"
         >
@@ -20,24 +20,17 @@
   </main>
 </template>
 <script>
-import axios from "axios";
 import Card from "./Card.vue";
 export default {
   name: "Main",
+  props: ["discs", "search"],
   components: {
     Card,
   },
-  data() {
-    return {
-      discs: [],
-    };
-  },
-  mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((res) => {
-        this.discs = res.data.response;
-      });
+  computed: {
+    filterdiscs() {
+      return this.discs.filter((disc) => disc.genre.includes(this.search));
+    },
   },
 };
 </script>

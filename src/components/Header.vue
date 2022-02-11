@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-2">
           <figure class="p-2">
             <img
@@ -11,14 +11,28 @@
             />
           </figure>
         </div>
+        <div class="offset-8 col-2">
+          <Select @changes="changeSearch" :genres="genres[0]" />
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import Select from "./Select.vue";
 export default {
   name: "Header",
+  prop: ["genres"],
+  components: {
+    Select,
+  },
+  methods: {
+    changeSearch(value) {
+      const search = value;
+      this.$emit("change", search);
+    },
+  },
 };
 </script>
 
