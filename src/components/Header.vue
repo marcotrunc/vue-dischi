@@ -12,7 +12,7 @@
           </figure>
         </div>
         <div class="offset-8 col-2">
-          <Select @changes="changeSearch" :genres="genres[0]" />
+          <Select @changes="changeSearch" :genres="genres" :titles="titles" />
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
 import Select from "./Select.vue";
 export default {
   name: "Header",
-  prop: ["genres"],
+  props: ["genres", "titles"],
   components: {
     Select,
   },

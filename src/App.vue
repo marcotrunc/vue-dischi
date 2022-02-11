@@ -1,6 +1,6 @@
 <template>
   <div class="generic-container d-flex flex-column">
-    <Header @change="changeSearch" :genres="genres" />
+    <Header @change="changeSearch" :genres="genres" :titles="titles" />
     <Main :discs="discs" :search="search" />
   </div>
 </template>

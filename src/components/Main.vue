@@ -29,7 +29,11 @@ export default {
   },
   computed: {
     filterdiscs() {
-      return this.discs.filter((disc) => disc.genre.includes(this.search));
+      if (!this.search) {
+        return this.discs;
+      } else {
+        return this.discs.filter((disc) => disc.genre.includes(this.search));
+      }
     },
   },
 };
